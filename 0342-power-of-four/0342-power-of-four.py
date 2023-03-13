@@ -5,6 +5,6 @@ class Solution:
         if n == 1:
             return True
         if n % 4 == 0:
-            return Solution.isPowerOfFour(self,n//4)
+            return self.isPowerOfFour(n//4)
         else:
             return False
