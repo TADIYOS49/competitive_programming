@@ -12,6 +12,8 @@ def solve(n,m):
         elif s%3 == 0:
             s = s//3
             count += 1
+        else:
+            return -1
     return count  
 n,m = map(int,input().split())
 print(solve(n,m))
