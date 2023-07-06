@@ -1,36 +1,20 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        # Graph
-        graph = defaultdict(list)
-        visited = set()
-        queue = deque([source])
-        for node1,node2 in edges:
-            graph[node1].append(node2)
-            graph[node2].append(node1)
-        def dfs(node):
-            if node == destination:
-                return True
-            visited.add(node)
-            for i in graph[node]:
-                if i not in visited:
-                    found = dfs(i)
-                    if found:
-                        return True
-            return False
-        def bfs():
-            while queue:
-                node = queue.popleft()
-                if node == destination:
-                    return True
-                for nebour in graph[node]:
-                    if nebour not in visited:
-                        visited.add(nebour)
-                        queue.append(nebour)
-                        if nebour == destination:
-                            return True
-            return False
-                
-        return bfs()
+        graph = [i for i in range(n)]
+        def find(child):
+            if graph[child] == child:
+                return child
+            return find(graph[child])
         
+        def uni(child, parent):
+            rep = find(child)
+            rep1 = find(parent)
+            graph[rep] = graph[rep1]
         
+        for i,j in edges:
+            uni(i,j)
+        if find(source) == find(destination):
+            return True
+        else:
+            return False
         
