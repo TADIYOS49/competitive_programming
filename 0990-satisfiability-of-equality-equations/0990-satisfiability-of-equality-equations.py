@@ -15,8 +15,9 @@ class Solution:
                 return c
             if parent[c] == c:
                 return c
-            
-            return find(parent[c])
+            boss = find(parent[c])
+            parent[c] = boss
+            return boss
         
         for eq in equations: 
             if eq[1] == '=':
