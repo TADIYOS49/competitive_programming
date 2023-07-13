@@ -3,7 +3,6 @@ class Solution:
         points.sort()
         ans = 1
         checker = points[0][1]
-        print(points)
         for i in range(1,len(points)):
             if checker < points[i][0]:
                 checker = points[i][1]
