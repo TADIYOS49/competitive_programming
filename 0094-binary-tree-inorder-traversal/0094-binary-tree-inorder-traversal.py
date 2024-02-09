@@ -16,10 +16,11 @@ class Solution:
                 fun(rt.left)
             
             result.append(rt.val)
-            if rt.right == None:
-                return
-            else:
+            
+            if rt.right != None:
                 fun(rt.right)
+            
+            return 
         fun(root)
         return result
         
